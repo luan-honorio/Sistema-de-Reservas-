@@ -1,0 +1,73 @@
+<app-navbar></app-navbar>
+
+<main class="p-3">
+  <p class="title IC "> Details of "{{item.Title}}" at {{value}}</p>
+
+  <div class="s">
+    <section class="d-flex columns-3 ">
+      <img *ngFor="let image of item.ItemPictures" width="290" class="card"  height="210" src="../../assets/itemPictures/{{image.PictureFileName}}" onerror="this.src='../../assets/Defull.jpg'">
+      <img *ngIf="!item.ItemPictures?.length" width="290" height="210" src="../../assets/Defull.jpg">
+    </section>
+
+  </div>
+  
+  <section class="d-flex columns-3 justify-content-between">
+    <div class="col-1 cols1 c1">
+      <p>Capacidade: {{item.Capacity}} Quartos: {{item.NumberOfBedrooms}} Banheiros: {{item.NumberOfBathrooms}}</p>
+
+      <p>
+        <b>Description</b> <br>
+        {{item.Description}}
+      </p>
+
+      <p>
+        <b>Host rules</b> <br>
+        {{item.HostRules}}
+      </p>
+    </div>
+
+    <div class="flex-center col-2 cols1 c2 " >
+      <b>Available Amenities: </b> <br>
+      <p *ngFor="let a of item.ItemAmenities">
+        <img src="../../assets/{{a.Amenity.IconName}}" alt="">{{a.Amenity.Name}}
+      </p>
+
+    </div>
+
+    <div [formGroup]="form" class="col-3 cols c1">
+      <div class="form-group">
+        <label class="title" for="">Check-in</label>
+        <input class="form-control" type="date" formControlName="checkIn">
+      </div>
+      <small class="text-error" *ngIf="!form.get('checkIn')?.pristine && form.get('checkIn')?.errors && form.get('reserve')?.errors?.['required']">Campo obrigatório</small>
+
+
+
+      <br>
+      <div class="form-group">
+        <label class="title" for="">Check-out</label>
+        <input class="form-control" type="date" formControlName="checkOut">
+      </div>
+      <small class="text-error" *ngIf="!form.get('checkOut')?.pristine && form.get('checkOut')?.errors && form.get('reserve')?.errors?.['required']">Campo obrigatório</small>
+
+
+
+      <br>
+      <div class="form-group">
+        <label class="title" for="">Reserve for</label>
+        <input class="form-control ctn1" type="number" formControlName="reserve">
+      </div>
+      <small class="text-error t2" *ngIf="!form.get('reserve')?.pristine && form.get('reserve')?.errors && form.get('reserve')?.errors?.['required']">Campo obrigatório</small>
+      <small class="text-error t2" *ngIf="form.get('reserve')?.errors && form.get('reserve')?.errors?.['max']">Capacidade máxima é {{item.Capacity}}</small>
+
+      <br>
+      <p class="title">Payable amount: ${{item.ItemPrices.Price}} </p>
+
+      <br>
+
+      <button class="btn btn-primary" [disabled]="form.invalid || !diarias" (click)="payment()">Reserve Já</button>
+    </div>
+  </section>
+
+
+</main>

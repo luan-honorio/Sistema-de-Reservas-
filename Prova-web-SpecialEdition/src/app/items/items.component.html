@@ -1,0 +1,20 @@
+<app-navbar (headleEvent)="handleEvent($event)">
+
+</app-navbar>
+
+
+<main>
+
+  <p class="title">Reservation results for {{value}} from 25/11/2022 for 1 night</p>
+
+  <section class="grid d-flex">
+   <div class="card m-3" (click)="detalhes(item)" *ngFor="let item of items">
+     <img class="card-img-top" width="260" height="175" src="../../assets/itemPictures/{{item.Picture?.PictureFileName}}" onerror="this.src='../../assets/Defull.jpg'" />
+     <div class="card-body">
+       <h5 class="card-title">{{item.Title}}</h5>
+       <p class="card-text"> {{item.Area.Name}}        {{item.Capacity}} Pessoas</p>
+       <p class="card-text">Preço: {{item.ItemPrices ? item.ItemPrices?.Price : ''}}</p>
+     </div>
+  </div> 
+  </section>
+</main>

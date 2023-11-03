@@ -1,0 +1,78 @@
+<main class="d-flex gap-4 ">
+
+
+  <form class="form-group p-4">
+
+    <div class="box">
+      <label>card Number:</label>
+      <input class="form-control" type="number" />
+    </div>
+
+    <div class="d-flex p-4 box">
+      <label>CVC</label>
+      <input class="form-control ib" type="number" />
+
+      <label>MM</label>
+      <input class="form-control ib" type="number" />
+
+      <label>YY</label>
+      <input class="form-control ib" type="number" />
+
+    </div>
+
+    <div class="box">
+      <label>PASSWORD</label>
+      <input class="form-control" type="password" />
+
+    </div>
+
+    <div class="but">
+      <button (click)="chamarToken()" class="btn m-2">pay now   R${{form.price}} </button>
+      <button class="btn m-2">cancel</button>
+    </div>
+
+
+  </form>
+
+
+
+
+
+  <div class="line"></div>
+
+
+
+  <div>
+
+    <h4>Payment Details</h4>
+
+
+    <p>
+      fee:
+    </p>
+    <p>
+      TransationId:
+    </p>
+    <p>
+      sale Description
+    </p>
+
+
+
+
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</main>

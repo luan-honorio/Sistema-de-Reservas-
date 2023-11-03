@@ -1,0 +1,61 @@
+<app-navbar></app-navbar>
+
+
+<main *ngIf="resultado.status === 'sucesso'" class="m-5">
+  <div class="m-auto">
+    <img src="./assets/felizSucess.jpeg" width="300" />
+
+  </div>
+
+  <p class=" ">
+    Parabéns, a acomodação foi reservada para você de {{resultado.datainicio | date:'dd MMM' }} a {{resultado.datatermino | date:'dd MMM' }}. Desejamos uma boa estadia!
+  </p>
+
+  <div class="box card">
+    <h2>
+      pagamento details
+    </h2>
+
+
+    <p>
+      translation : {{resultado.transaction}}
+    </p>
+
+
+    <p>property Title : {{resultado.title}}</p>
+    <p>Total fee:  R${{resultado.total}}</p>
+
+
+
+  </div>
+
+
+</main>
+
+<main *ngIf="resultado.status === 'Erro'">
+  <div class="m-auto">
+    <img src="./assets/tristeSucess.jpeg" width="300" />
+
+  </div>
+
+  <p class="title">
+   Infelizmente seu pagamento não foi bem-sucedido
+  </p>
+
+  <div class="box card">
+    <h1>
+
+        The reason for the transaction error:
+    </h1>
+
+    <p>
+      {{resultado.message.message}}
+    </p>
+
+
+   
+
+
+  </div>
+</main>
+
